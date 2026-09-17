@@ -33,10 +33,10 @@ def add_cors(response):
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
     return response
 
-@app.route("/", methods=["OPTIONS"])
-@app.route("/<path:path>", methods=["OPTIONS"])
-def options_handler(path=""):
-    return Response("", status=200)
+@app.route("/", methods=["GET", "OPTIONS"])
+def index():
+    return jsonify({"status": "ok", "service": "ReelMLB Sim API"})
+
 
 # ─────────────────────────────────────────────
 # PARK FACTORS
